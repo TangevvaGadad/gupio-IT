@@ -21,22 +21,23 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 
 // Health check
-app.get('/api/health', (req, res) => {
+app.get('/api/health', (_req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
 // MongoDB connection
 mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/gupio-inventory')
-  .then(() => {
-    console.log(' Connected to MongoDB');
-    seedInitialProducts().then(() => console.log(' Initial products ready'));
+  .then(async () => {
+    console.log('✅ Connected to MongoDB');
+    await seedInitialProducts();
+    console.log('🌱 Seed data ensured');
     app.listen(PORT, () => {
-      console.log(` Server running on port ${PORT}`);
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.error('MongoDB connection error:', error);
+    console.error('❌ MongoDB connection error:', error);
     process.exit(1);
   });
 
