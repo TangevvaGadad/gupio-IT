@@ -60,17 +60,17 @@ const seed = async () => {
     await mongoose.connect(
       process.env.MONGODB_URI || 'mongodb://localhost:27017/gupio-inventory'
     );
-    console.log('✅ Connected to MongoDB');
+    console.log(' Connected to MongoDB');
 
     await Product.deleteMany({});
-    console.log('🗑️  Cleared existing products');
+    console.log('  Cleared existing products');
 
     await Product.insertMany(seedProducts);
-    console.log('✅ Seeded products successfully');
+    console.log(' Seeded products successfully');
 
     process.exit(0);
   } catch (error) {
-    console.error('❌ Seeding error:', error);
+    console.error(' Seeding error:', error);
     process.exit(1);
   }
 };
