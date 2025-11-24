@@ -5,7 +5,6 @@ import {
   ToastTitle,
   ToastDescription,
   ToastClose,
-  type ToastProps,
 } from './toast';
 import { useToast } from '../../hooks/use-toast';
 

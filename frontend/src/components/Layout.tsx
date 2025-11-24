@@ -28,7 +28,7 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center space-x-2">
               <div className="text-3xl font-bold text-local-green" style={{ fontFamily: 'cursive' }}>
-                Local
+                Gupio-IT
               </div>
             </Link>
             

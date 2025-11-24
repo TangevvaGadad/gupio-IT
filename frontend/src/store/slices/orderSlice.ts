@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Order, CreateOrderData } from '../../types';
 import { orderApi } from '../../services/api';
 import { fetchProducts } from './productSlice';
-import { AppDispatch } from '../store';
 
 interface OrderState {
   orders: Order[];

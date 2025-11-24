@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import productRoutes from './routes/productRoutes';
 import orderRoutes from './routes/orderRoutes';
+import { seedInitialProducts } from './utils/initialProducts';
 
 dotenv.config();
 
@@ -28,13 +29,14 @@ app.get('/api/health', (req, res) => {
 mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/gupio-inventory')
   .then(() => {
-    console.log('✅ Connected to MongoDB');
+    console.log(' Connected to MongoDB');
+    seedInitialProducts().then(() => console.log(' Initial products ready'));
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(` Server running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.error('❌ MongoDB connection error:', error);
+    console.error('MongoDB connection error:', error);
     process.exit(1);
   });
 
